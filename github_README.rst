@@ -23,7 +23,7 @@ to it, drop me a line.
 pySlip works on Linux and may work on Mac and Windows.  It works with wxPython
 4.0+ and Python 3.6+.  It may work on earlier python 3 versions.  It has been
 tested on Linux but not Windows or macOS, yet.  Earlier version *did* run on
-Windows and MacOS, but I no longer run Windows and wxpython won't wotk on MacOS
+Windows and MacOS, but I no longer run Windows and wxpython won't work on MacOS
 inside a virtual environment.
 
 The widget API is documented in
