@@ -2088,17 +2088,6 @@ class pySlip(_BufferedCanvas):
         if delayed_paint:
             self.Update()
 
-    def OnLeftDClick(self, event):
-        """Left mouse button double-click.
-
-        Zoom in (if possible).
-        Zoom out (if possible) if shift key is down.
-        """
-
-        # ignore next Left UP event
-        self.ignore_next_up = True
-
-
     def OnMouseWheel(self, event):
         """Mouse wheel event."""
 
