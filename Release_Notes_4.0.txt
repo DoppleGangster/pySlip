@@ -2,7 +2,7 @@ Release 4.0 of pySlip has the following changes:
 
 1. Uses wxPython 4.0.
 
-2. Uses python 3.6.
+2. Uses python 3.6+.
 
 2. A more streamlined way to define tile sources.
 
@@ -11,7 +11,6 @@ Release 4.0 of pySlip has the following changes:
      Stamen Toner tiles         (stamen_toner.py)
      Stamen Transport tiles     (stamen_transport.py)
      Stamen Watercolor tiles    (stamen_watercolor.py)
-   See note about the existing OpenStreetMap tiles below.
 
 4. A method of changing the tile source for an existing pySlip instance.
    See the API documentation for more details.  The examples/pyslip_demo.py
@@ -21,9 +20,8 @@ Release 4.0 of pySlip has the following changes:
    documentation for details on managing this feature.
 
 6. Merged in a fix from fivitti to address issue #61: OSM tiles not behaving.
+   This fix allows user code to set a user agent string for a tile source.
    This has NOT been tested by me since I can't run wxpython on MacOS.
-   This fix allows user code to set a user agent string for OSM tiles.
-   If required, this fix could be extended to other internet tile sources.
 
 The built in GMT tiles are not at the same zoom level as the internet tiles.
 This may change in the future.

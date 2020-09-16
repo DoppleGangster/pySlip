@@ -323,6 +323,15 @@ class AppFrame(wx.Frame):
         event  the menu select event
         """
 
+        print(f'onTilesetSelect: event={dir(event)}')
+        print(f'event.GetClientData()={event.GetClientData()}')
+        print(f'event.GetClientObject()={event.GetClientObject()}')
+        print(f'event.Id={event.Id}')
+        print(f'event.GetId()={event.GetId()}')
+#        GetClientData
+#        Id
+#        GetId
+
         self.change_tileset(event.GetId())
 
 #####
@@ -473,16 +482,23 @@ class AppFrame(wx.Frame):
         # this dict: id -> (display_name, module_name, tileset_obj)
         self.id2tiledata = {}
 
+        # map tileset name to item ID number
+        self.name2id = {}
+
         # create the tileset menuitems, add to menu and connect to handler
         for (tile_index, (name, module_name)) in enumerate(Tilesets):
             new_id = wx.NewId()
             tile_menu.Append(new_id, name, name, wx.ITEM_RADIO)
             self.Bind(wx.EVT_MENU, self.onTilesetSelect)
             self.id2tiledata[new_id] = (name, module_name, None)
-#            self.name2guiid[name] = new_id
+            self.name2id[name] = new_id
             if tile_index == DefaultTilesetIndex:
                 self.default_tileset_name = name
                 tile_menu.Check(new_id, True)
+            print(f'mi.GetId()
+
+        print(f'self.id2tiledata={self.id2tiledata}')
+        print(f'self.name2id={self.name2id}')
 
         if self.default_tileset_name is None:
             raise Exception('Bad DefaultTileset (%s) or Tilesets (%s)'
@@ -552,10 +568,9 @@ class AppFrame(wx.Frame):
         # lay out the controls
         sb = AppStaticBox(parent, 'Map level')
         box = wx.StaticBoxSizer(sb, orient=wx.HORIZONTAL)
-        box.Add(txt, flag=(wx.ALIGN_CENTER_VERTICAL
-                           |wx.ALIGN_RIGHT|wx.LEFT))
+        box.Add(txt, flag=(wx.ALIGN_CENTER_VERTICAL |wx.LEFT))
         box.Add(self.map_level, proportion=0,
-                flag=wx.LEFT|wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL)
+                flag=wx.LEFT|wx.ALIGN_CENTER_VERTICAL)
 
         return box
 
@@ -577,8 +592,7 @@ class AppFrame(wx.Frame):
         # lay out the controls
         sb = AppStaticBox(parent, 'Mouse position')
         box = wx.StaticBoxSizer(sb, orient=wx.HORIZONTAL)
-        box.Add(txt, flag=(wx.ALIGN_CENTER_VERTICAL
-                           |wx.ALIGN_RIGHT|wx.LEFT))
+        box.Add(txt, flag=(wx.ALIGN_CENTER_VERTICAL |wx.LEFT))
         box.Add(self.mouse_position, proportion=0,
                 flag=wx.RIGHT|wx.TOP|wx.BOTTOM)
 
